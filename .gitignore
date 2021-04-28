@@ -39,3 +39,5 @@ keystore.properties
 # apk
 /app/release/
 /app/debug/
+
+secring.gpg
