@@ -20,7 +20,7 @@ abstract class SerialPortReadThread(
             try {
                 val size: Int = inputStream.read(readBuffer)
                 if (-1 == size || 0 >= size) {
-                    return
+                    continue
                 }
                 val readBytes = ByteArray(size)
                 System.arraycopy(readBuffer, 0, readBytes, 0, size)

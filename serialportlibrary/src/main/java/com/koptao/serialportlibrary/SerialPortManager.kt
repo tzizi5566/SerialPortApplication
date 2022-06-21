@@ -41,9 +41,9 @@ class SerialPortManager : SerialPort() {
                 mFileInputStream = inputStream as FileInputStream
                 mFileOutputStream = outputStream as FileOutputStream
                 //开启发送消息的线程
-                startSendThread();
+                startSendThread()
                 //开启接收消息的线程
-                startReadThread();
+                startReadThread()
                 true
             } else {
                 false
@@ -104,7 +104,7 @@ class SerialPortManager : SerialPort() {
                         try {
                             mFileOutputStream?.apply {
                                 write(sendBytes)
-                                write(10)
+//                                write(10)
                             }
                             mOnSerialPortDataListener?.onDataSent(sendBytes)
                         } catch (e: IOException) {
