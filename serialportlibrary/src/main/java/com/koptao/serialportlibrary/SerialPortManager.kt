@@ -104,7 +104,6 @@ class SerialPortManager : SerialPort() {
                         try {
                             mFileOutputStream?.apply {
                                 write(sendBytes)
-//                                write(10)
                             }
                             mOnSerialPortDataListener?.onDataSent(sendBytes)
                         } catch (e: IOException) {
