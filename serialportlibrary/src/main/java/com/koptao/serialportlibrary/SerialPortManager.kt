@@ -65,14 +65,14 @@ class SerialPortManager : SerialPort() {
 
         try {
             mFileInputStream?.close()
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         mFileInputStream = null
 
         try {
             mFileOutputStream?.close()
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         mFileOutputStream = null
@@ -106,7 +106,7 @@ class SerialPortManager : SerialPort() {
                                 write(sendBytes)
                             }
                             mOnSerialPortDataListener?.onDataSent(sendBytes)
-                        } catch (e: IOException) {
+                        } catch (e: Exception) {
                             e.printStackTrace()
                         }
                     }

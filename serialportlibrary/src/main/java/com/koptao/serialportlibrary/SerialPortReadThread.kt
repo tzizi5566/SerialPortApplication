@@ -19,12 +19,13 @@ abstract class SerialPortReadThread(
         while (!isInterrupted) {
             try {
                 val size: Int = inputStream.read(readBuffer)
-                if (size != -1  || size >= 0) {
-                    val readBytes = ByteArray(size)
-                    System.arraycopy(readBuffer, 0, readBytes, 0, size)
-                    onDataReceived(readBytes)
+                if (-1 == size || 0 >= size) {
+                    continue
                 }
-            } catch (e: IOException) {
+                val readBytes = ByteArray(size)
+                System.arraycopy(readBuffer, 0, readBytes, 0, size)
+                onDataReceived(readBytes)
+            } catch (e: Exception) {
                 e.printStackTrace()
                 return
             }
@@ -43,7 +44,7 @@ abstract class SerialPortReadThread(
         interrupt()
         try {
             inputStream.close()
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
